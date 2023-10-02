@@ -1,7 +1,6 @@
 import express from "express";
 import { db, connectToDB } from "./db.js";
 
-
 const app = express();
 app.use(express.json());
 
@@ -22,7 +21,7 @@ app.get('/api/articles/:name', async (req, res) => {
 
 app.put('/api/articles/:name/upvote', async(req, res) => {
     const { name } = req.params;
-
+    
     await db.collection('articles').updateOne({ name }, {
         $inc: { upvotes: 1},
     });
@@ -53,8 +52,8 @@ app.post('/api/articles/:name/comments', async (req, res) => {
 });
 
 connectToDB(() => {
-    console.log(`Successfully connected to the database!`)
+    console.log('Successfully connected to database');
     app.listen(8000, () => {
         console.log('Server listening on port 8000');
     });
-});
+})

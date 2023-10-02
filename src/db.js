@@ -6,7 +6,7 @@ let db;
 async function connectToDB(cb) {
     const client = new MongoClient('mongodb://127.0.0.1:27017'); // connect to local mongodb
     await client.connect();
-    const db = client.db('react-blog-db'); // reeferencing the specific database
+    db = client.db('react-blog-db'); // reeferencing the specific database
     cb();
 }
 
@@ -14,4 +14,4 @@ async function connectToDB(cb) {
 export {
     db,
     connectToDB,
-}
+};
