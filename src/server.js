@@ -15,9 +15,7 @@ app.get('/api/articles/:name', async (req, res) => {
     }else {
         res.sendStatus(404);
     }
-    
 });
-
 
 app.put('/api/articles/:name/upvote', async(req, res) => {
     const { name } = req.params;
@@ -48,8 +46,20 @@ app.post('/api/articles/:name/comments', async (req, res) => {
     }else {
         res.send(`That article doesn't exist`);
     }
-    
 });
+
+/*
+app.post('/api/artiles/', async (req, res) => {
+    const { name } = req.body;
+    
+   await db.collection('articles').post({name}, {
+     $push: { name: {name}},
+   });
+
+   const article = await db.collection('articles').findOne({ name });
+   
+   res.send(`The article ${article} has been added`);
+}); */
 
 connectToDB(() => {
     console.log('Successfully connected to database');
