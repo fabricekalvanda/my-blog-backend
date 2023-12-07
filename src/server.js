@@ -67,7 +67,7 @@ app.put('/api/articles/:name/upvote', async(req, res) => {
             });
         }
         const updatedArticle = await db.collection('articles').findOne({ name });
-        res.send(updatedArticle);
+        res.json(updatedArticle);
     } else {
         res.send(`That article doesn't exist`);
     }
