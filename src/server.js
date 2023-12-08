@@ -27,6 +27,10 @@ app.use(async (req, res, next) => {
     next();
 });
 
+// app.get('/hello', (req, res) => {
+//     res.send('Hello!');
+// });
+
 app.get('/api/articles/:name', async (req, res) => {
     const { name } = req.params; // getting the api url parameter "name"
     const { uid } = req.user;
